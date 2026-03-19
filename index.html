@@ -73,9 +73,25 @@
         </section>
 
         <!-- Scenic Transition Section -->
-        <section class="transition-section">
-            <div class="great-vibes text-gold text-5xl text-center px-4 fade-trigger">
-                "Every love story is beautiful, but ours is my favorite."
+        <section class="transition-section flex-col-center" id="transition">
+            <!-- Floating Parallax Clouds -->
+            <div class="parallax-cloud cloud-1"></div>
+            <div class="parallax-cloud cloud-2"></div>
+            <div class="parallax-cloud cloud-3"></div>
+
+            <div class="fade-trigger flex-col-center" style="z-index: 5;">
+                <h4 class="great-vibes text-accent text-3xl mb-6 text-glow">Reveal Marriage Date</h4>
+                
+                <div class="scratch-wrapper">
+                    <!-- Base: Wax Seal Image -->
+                    <img src="./assets/wax_seal.png" alt="Wax Seal" class="wax-seal-img" />
+                    
+                    <!-- Middle: Revealed Date Text -->
+                    <div class="stamp-text cinzel text-glow">26<br>JAN 2027</div>
+                    
+                    <!-- Top: Scratch Canvas covering the inner circle -->
+                    <canvas id="scratch-pad" class="scratch-pad"></canvas>
+                </div>
             </div>
         </section>
 
@@ -126,6 +142,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
     <script src="./src/main.js"></script>
     <link rel="stylesheet" href="./src/style.css" />
 </body>

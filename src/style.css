@@ -508,7 +508,112 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 40vh;
+    min-height: 50vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Parallax Clouds Background */
+.parallax-cloud {
+    position: absolute;
+    background: url('../assets/cloud.png') center/contain no-repeat;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.cloud-1 {
+    width: 300px;
+    height: 200px;
+    top: 10%;
+    left: -5%;
+    animation: breatheCloud 8s ease-in-out infinite alternate;
+}
+
+.cloud-2 {
+    width: 450px;
+    height: 300px;
+    top: 40%;
+    right: -10%;
+    animation: breatheCloud 11s ease-in-out infinite alternate-reverse;
+    opacity: 0.6;
+}
+
+.cloud-3 {
+    width: 250px;
+    height: 150px;
+    bottom: 5%;
+    left: 20%;
+    animation: breatheCloud 9s ease-in-out infinite alternate;
+    opacity: 0.9;
+}
+
+@keyframes breatheCloud {
+    0% { transform: translateY(0px) scale(1); }
+    100% { transform: translateY(-30px) scale(1.02); } /* Slight constant upward movement */
+}
+
+/* Scratch to Reveal Container */
+.scratch-wrapper {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.scratch-reveal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* Let canvas handle events */
+}
+
+.wax-seal-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    filter: drop-shadow(0 15px 25px rgba(100, 20, 20, 0.2));
+    z-index: 10;
+    pointer-events: none; /* Let canvas underneath handle events securely */
+}
+
+.stamp-text {
+    position: absolute;
+    color: #F8F3EB;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5), -1px -1px 2px rgba(255,255,255,0.1);
+    transform: translateY(-5px); 
+    z-index: 15;
+    pointer-events: none;
+}
+
+.scratch-pad {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px; /* Covers exactly the inner circle of the wax seal */
+    height: 200px;
+    cursor: crosshair;
+    border-radius: 50%; /* Rounded to stay within the wax edges */
+    z-index: 20;
 }
 
 /* Event Sections */

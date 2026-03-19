@@ -114,6 +114,163 @@ function initAnimations() {
       });
     });
 
+    // Parallax Clouds - Move slowly upwards on scroll
+    gsap.to('.cloud-1', {
+      yPercent: -20,
+      ease: "none",
+      scrollTrigger: {
+        trigger: '#transition',
+        scrub: true,
+        start: "top bottom",
+        end: "bottom top"
+      }
+    });
+
+    gsap.to('.cloud-2', {
+      yPercent: -35,
+      ease: "none",
+      scrollTrigger: {
+        trigger: '#transition',
+        scrub: true,
+        start: "top bottom",
+        end: "bottom top"
+      }
+    });
+
+    gsap.to('.cloud-3', {
+      yPercent: -15,
+      ease: "none",
+      scrollTrigger: {
+        trigger: '#transition',
+        scrub: true,
+        start: "top bottom",
+        end: "bottom top"
+      }
+    });
+
+    // Scratch to Reveal Logic
+    const canvas = document.getElementById('scratch-pad');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let isDrawing = false;
+
+      // Setup Canvas to look like blank wax
+      function setupCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+
+        // Rich Red Wax Gradient
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, '#8A151B'); // Deep red wax
+        gradient.addColorStop(0.5, '#A31D24'); // Lighter center
+        gradient.addColorStop(1, '#6E0E14'); // Dark red edge
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw "Scratch Here" text lightly embossed
+        ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+        ctx.font = "clamp(1rem, 4vw, 1.2rem) Outfit";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("Scratch Here", canvas.width / 2, canvas.height / 2);
+      }
+
+      setupCanvas();
+
+      function getCoordinates(e) {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+          x: clientX - rect.left,
+          y: clientY - rect.top
+        };
+      }
+
+      let hasPopped = false;
+
+      function checkPercentage() {
+        if (hasPopped) return;
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+        let transparent = 0;
+        
+        // Fast sampling by checking every 4th pixel's alpha (RGBA)
+        for (let i = 3; i < data.length; i += 16) {
+          if (data[i] === 0) transparent++;
+        }
+        
+        const totalSampled = data.length / 16;
+        const percent = transparent / totalSampled;
+        
+        if (percent > 0.7) {
+          hasPopped = true;
+          
+          // Trigger Confetti Popper using the imported canvas-confetti
+          if (typeof confetti === 'function') {
+            confetti({
+              particleCount: 150,
+              spread: 80,
+              origin: { y: 0.6 },
+              colors: ['#D4AF37', '#8A151B', '#F8F3EB', '#C3CBB4'] // Match theme: Gold, Red, Cream, Sage
+            });
+          }
+
+          // Automatically dissolve the rest of the canvas for a clean look
+          gsap.to(canvas, { opacity: 0, duration: 0.8, onComplete: () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.style.opacity = 1; // restore opacity in case they touch it again
+          }});
+        }
+      }
+
+      function scratch(x, y) {
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath();
+        // Slightly randomized fluffy brush effect for "thick liquid/foil" feel
+        ctx.arc(x, y, 30, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Randomly check completion (~10% of scratch events to save performance)
+        if (!hasPopped && Math.random() < 0.1) {
+          checkPercentage();
+        }
+      }
+
+      canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        const { x, y } = getCoordinates(e);
+        scratch(x, y);
+      });
+
+      canvas.addEventListener('mousemove', (e) => {
+        if (!isDrawing) return;
+        const { x, y } = getCoordinates(e);
+        scratch(x, y);
+      });
+
+      window.addEventListener('mouseup', () => { isDrawing = false; });
+
+      // Touch Support
+      canvas.addEventListener('touchstart', (e) => {
+        isDrawing = true;
+        const { x, y } = getCoordinates(e);
+        scratch(x, y);
+        e.preventDefault(); // Prevent scrolling while scratching
+      }, { passive: false });
+
+      canvas.addEventListener('touchmove', (e) => {
+        if (!isDrawing) return;
+        const { x, y } = getCoordinates(e);
+        scratch(x, y);
+        e.preventDefault();
+      }, { passive: false });
+
+      window.addEventListener('touchend', () => { isDrawing = false; });
+    }
+
   }, 1000); // Start scroll setup after entrance animations
 }
 

@@ -160,17 +160,17 @@ function initAnimations() {
         canvas.width = rect.width;
         canvas.height = rect.height;
 
-        // Rich Red Wax Gradient
+        // Soft Dusty Rose Wax Gradient to match new seal
         const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-        gradient.addColorStop(0, '#8A151B'); // Deep red wax
-        gradient.addColorStop(0.5, '#A31D24'); // Lighter center
-        gradient.addColorStop(1, '#6E0E14'); // Dark red edge
+        gradient.addColorStop(0, '#E1BFBA'); 
+        gradient.addColorStop(0.5, '#F5DCD9'); 
+        gradient.addColorStop(1, '#D9AEA9'); 
 
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // Draw "Scratch Here" text lightly embossed
-        ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
         ctx.font = "clamp(1rem, 4vw, 1.2rem) Outfit";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
@@ -208,7 +208,7 @@ function initAnimations() {
         // The canvas is a square, but CSS border-radius: 50% makes it a circle.
         // The invisible corners take up ~21.5% of the total area. 
         // If the user scratches 70% of the *visible* circle, that is about 55% of the total square area.
-        // We set the threshold to 0.5 (50% of total area) to trigger reliably.
+        // We set the threshold to 0.4 (approx 50% of the visible circle) to trigger reliably.
         if (percent > 0.4) {
           hasPopped = true;
           
@@ -218,7 +218,7 @@ function initAnimations() {
               particleCount: 150,
               spread: 80,
               origin: { y: 0.6 },
-              colors: ['#D4AF37', '#8A151B', '#F8F3EB', '#C3CBB4'] // Match theme: Gold, Red, Cream, Sage
+              colors: ['#D4AF37', '#EDD0CC', '#F8F3EB', '#C3CBB4'] // Match theme: Gold, Pale Pink, Cream, Sage
             });
           }
 

@@ -609,8 +609,8 @@ html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 200px; /* Covers exactly the inner circle of the wax seal */
-    height: 200px;
+    width: 250px; /* Covers a wider area of the wax seal */
+    height: 250px;
     cursor: crosshair;
     border-radius: 50%; /* Rounded to stay within the wax edges */
     z-index: 20;

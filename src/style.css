@@ -1,0 +1,654 @@
+/* CSS Reset & Variables - Pastel Watercolor Theme */
+:root {
+    --color-primary: #E0B5B1;
+    /* Soft Dusty Rose / Peach */
+    --color-secondary: #C3CBB4;
+    /* Soft Sage Green */
+    --color-accent: #C2A878;
+    /* Muted Antique Gold */
+    --color-text: #4A403A;
+    /* Warm Charcoal/Brown for soft readable contrast */
+    --color-bg: #FAF6F0;
+    /* Soft warm watercolor paper cream */
+    --color-white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #E2DBD0;
+    /* Desktop Outer Frame backing */
+    color: var(--color-text);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Typography Classes */
+.cinzel {
+    font-family: 'Cinzel', serif;
+}
+
+.playfair {
+    font-family: 'Playfair Display', serif;
+}
+
+.outfit {
+    font-family: 'Outfit', sans-serif;
+}
+
+.great-vibes {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+}
+
+.text-gold {
+    color: var(--color-accent);
+}
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-sage {
+    color: var(--color-secondary);
+}
+
+.text-white {
+    color: var(--color-white);
+}
+
+.text-dark {
+    color: var(--color-text);
+}
+
+.text-muted {
+    color: #8A807A;
+}
+
+/* Font Sizing Hierarchy */
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+}
+
+.text-2xl {
+    font-size: 1.5rem;
+}
+
+.text-3xl {
+    font-size: 2.25rem;
+}
+
+.text-4xl {
+    font-size: 3rem;
+}
+
+.text-5xl {
+    font-size: 4.5rem;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mt-6 {
+    margin-top: 1.5rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mb-6 {
+    margin-bottom: 1.5rem;
+}
+
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.tracking-widest {
+    letter-spacing: 0.25em;
+}
+
+.tracking-wider {
+    letter-spacing: 0.1em;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.leading-relaxed {
+    line-height: 1.8;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.block {
+    display: block;
+}
+
+.bg-white\/60 {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.border-gold\/30 {
+    border-color: rgba(194, 168, 120, 0.3);
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+.backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Soft elegant glow instead of harsh shadow */
+.text-glow {
+    text-shadow: 0 4px 15px rgba(224, 181, 177, 0.6);
+}
+
+.shadow-glow {
+    text-shadow: 0 4px 20px rgba(194, 168, 120, 0.3);
+}
+
+/* Helper flex classes */
+.w-full-flex {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.w-full-flex-end {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.flex-col-center {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Hand-painted watercolor paper texture overlay */
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 0.05 0' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Music Floating Action Button */
+.fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--color-white);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 10px 20px rgba(74, 64, 58, 0.1);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.fab:hover {
+    transform: scale(1.1);
+    background: var(--color-bg);
+}
+
+.fab.playing {
+    animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        box-shadow: 0 0 0 0 rgba(194, 168, 120, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(194, 168, 120, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(194, 168, 120, 0);
+    }
+}
+
+/* Main Content Mobile Application Constraint Layer */
+#main-content {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: var(--color-bg);
+    transform: translateZ(0);
+    /* Create strict containing block for fixed position descendants */
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+/* Parallax Hero */
+.parallax-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #FDFAEF, #F6EEE0);
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+}
+
+.bg-layer {
+    z-index: 0;
+}
+
+.mahal-layer {
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.mahal-img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center bottom;
+    opacity: 0.6;
+    /* Minimalist background */
+    mix-blend-mode: multiply;
+    /* Perfect for watercolor on cream */
+    filter: saturate(0.8);
+}
+
+.text-layer {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    top: -15%;
+}
+
+.title-3d {
+    font-size: 6rem;
+    letter-spacing: 0px;
+    transform: translateZ(30px);
+    color: var(--color-text);
+}
+
+.car-layer {
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    top: auto;
+    bottom: 0px;
+}
+
+.car-img {
+    width: 100%;
+    max-width: 800px;
+    mix-blend-mode: multiply;
+    filter: drop-shadow(0 20px 20px rgba(74, 64, 58, 0.1));
+}
+
+/* Personalization Crests on Images */
+.palace-crest {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    mix-blend-mode: multiply;
+    opacity: 0.85;
+}
+
+.car-crest {
+    position: absolute;
+    top: 55%;
+    left: 60%;
+    transform: translate(-50%, -50%) rotate(-3deg);
+    text-align: center;
+    mix-blend-mode: multiply;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+}
+
+.mouse {
+    width: 30px;
+    height: 50px;
+    border: 1.5px solid var(--color-accent);
+    border-radius: 15px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.wheel {
+    width: 3px;
+    height: 6px;
+    background: var(--color-accent);
+    border-radius: 2px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 1.5s infinite;
+}
+
+@keyframes scrollWheel {
+    0% {
+        top: 10px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 25px;
+        opacity: 0;
+    }
+}
+
+/* Soft Breathing Animations */
+@keyframes breatheBg {
+
+    0%,
+    100% {
+        transform: scale(1) translateY(0);
+    }
+
+    50% {
+        transform: scale(1.01) translateY(-3px);
+    }
+}
+
+@keyframes breatheText {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.95;
+    }
+
+    50% {
+        transform: translateY(-3px);
+        opacity: 1;
+    }
+}
+
+@keyframes breatheFg {
+
+    0%,
+    100% {
+        transform: scale(1) translateY(0);
+    }
+
+    50% {
+        transform: scale(1.015) translateY(-5px);
+    }
+}
+
+.breathing-bg {
+    animation: breatheBg 12s ease-in-out infinite;
+    will-change: transform;
+}
+
+.breathing-text {
+    animation: breatheText 8s ease-in-out infinite;
+    will-change: transform;
+}
+
+.breathing-fg {
+    animation: breatheFg 9s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* Soft fade-in up */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Transition Section */
+.transition-section {
+    padding: 120px 20px;
+    background: var(--color-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+}
+
+/* Event Sections */
+.event-section {
+    padding: 100px 20px;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg);
+    position: relative;
+    z-index: 10;
+}
+
+.bg-sage {
+    background-color: #EBF0E4;
+}
+
+/* Soft pastel alternate bg */
+.bg-peach {
+    background-color: #FFF2EF;
+}
+
+.content-box {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 60px 40px;
+    border-radius: 24px;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 0 20px 50px rgba(74, 64, 58, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Delicate Inner Border */
+.content-box::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border: 1px solid rgba(194, 168, 120, 0.3);
+    border-radius: 16px;
+    pointer-events: none;
+}
+
+.divider {
+    width: 50px;
+    height: 1px;
+    background: var(--color-primary);
+    margin: 30px auto;
+}
+
+.divider.gold {
+    background: var(--color-accent);
+}
+
+/* Video Elements */
+.video-container {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(74, 64, 58, 0.1);
+    border: 8px solid var(--color-white);
+}
+
+#celebration-video {
+    width: 100%;
+    display: block;
+    opacity: 0.9;
+}
+
+/* 3D Floating JS Classes */
+.floating-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    will-change: transform;
+}
+
+/* GSAP Fade Triggers */
+.fade-trigger {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+/* Footer */
+.footer {
+    padding: 120px 20px;
+    text-align: center;
+    background: var(--color-bg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .title-3d {
+        font-size: 3.5rem;
+    }
+
+    .text-5xl {
+        font-size: 3.5rem;
+    }
+
+    .text-4xl {
+        font-size: 2.5rem;
+    }
+
+    .content-box {
+        padding: 40px 20px;
+    }
+
+    .mahal-layer {
+        top: 0%;
+    }
+
+    .text-layer {
+        top: 8%;
+    }
+
+    .fab {
+        right: 20px;
+        bottom: 20px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-3d {
+        font-size: 2.8rem;
+    }
+
+    .text-3xl {
+        font-size: 2rem;
+    }
+
+    .car-img {
+        width: 115%;
+    }
+}

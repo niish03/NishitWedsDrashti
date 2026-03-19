@@ -551,7 +551,7 @@ html {
 
 @keyframes breatheCloud {
     0% { transform: translateY(0px) scale(1); }
-    100% { transform: translateY(-30px) scale(1.02); } /* Slight constant upward movement */
+    100% { transform: translateY(-50px) scale(1.2); } /* Slight constant upward movement */
 }
 
 /* Scratch to Reveal Container */

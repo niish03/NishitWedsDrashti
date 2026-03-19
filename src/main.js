@@ -205,7 +205,11 @@ function initAnimations() {
         const totalSampled = data.length / 16;
         const percent = transparent / totalSampled;
         
-        if (percent > 0.7) {
+        // The canvas is a square, but CSS border-radius: 50% makes it a circle.
+        // The invisible corners take up ~21.5% of the total area. 
+        // If the user scratches 70% of the *visible* circle, that is about 55% of the total square area.
+        // We set the threshold to 0.5 (50% of total area) to trigger reliably.
+        if (percent > 0.4) {
           hasPopped = true;
           
           // Trigger Confetti Popper using the imported canvas-confetti

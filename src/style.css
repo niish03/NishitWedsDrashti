@@ -504,7 +504,7 @@ html {
 /* Transition Section */
 .transition-section {
     padding: 120px 20px;
-    background: var(--color-bg);
+    background: linear-gradient(rgba(250, 246, 240, 0.85), rgba(250, 246, 240, 0.85)), url('../assets/bg.png') center/cover no-repeat fixed;
     display: flex;
     align-items: center;
     justify-content: center;

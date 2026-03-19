@@ -1,0 +1,9 @@
+node_modules
+.venv
+.env
+public
+src
+index.html
+package.json
+package-lock.json
+vite.config.js
